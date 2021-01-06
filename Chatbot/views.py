@@ -38,7 +38,9 @@ def webhook(request):
 
         except KeyError: # 압축된 이미지
             print('photo')
-            fileID = telegram_update['message']['photo'][1]['file_id'] # photo의 fild_id 추출, 이미지 저장에 활용
+            print('1')
+            fileID = telegram_update['message']['photo'][1]['file_id'] # photo의 file_id 추출, 이미지 저장에 활용
+            print('2')
             fileUniqueID = telegram_update['message']['photo'][1]['file_unique_id'] # photo의 file_unique_id 추출, 파일명에 활용
 
         # 파일명 전처리
@@ -150,6 +152,15 @@ def webhook(request):
                     text = '''{0}님은 {1}개의 사진을 등록하셨습니다.
 완료 : {2}  중지 : {3}  진행 : {4}'''.format(userName, count_total_image, count_complete_image, count_pause_image, count_ing_image)
                     bot.send_message(chat_id=chatID, text=text)
+                    try :
+                        if ANSWER.objects.filter(QUESTION_ID=load_question[0]).count() == 0:
+                            text = str(load_question[0].QUESTION_CNT) + ' 번째 답변을 입력해주세요.'
+                        else:
+                            text = str(load_question[0].QUESTION_CNT + 1) + ' 번째 질문을 입력해주세요.'
+
+                    except IndexError:
+                        text = '1번째 질문을 입력해주세요.'
+                    bot.send_message(chat_id=chatID, text=text)                                     
                     return HttpResponse(str(count_total_image))
 
                 # 중간에 사용방법 요청
@@ -256,7 +267,7 @@ def webhook(request):
         else: # 텍스트, 이미지 외의 파일 전송
             print('텍스트, 이미지 외의 파일 전송')
             text = '''이미지를 전송해주세요.
-{0}'''.format(image)
+{0}'''.format(image)   
             
             bot.send_message(chat_id=chatID, text=text)
 

@@ -1,0 +1,16 @@
+b'{
+	"update_id":678857698,\n
+	"message":{
+		"message_id":394,
+		"from":{
+			"id":1387407201,"is_bot":false,"first_name":"Sei Young","last_name":"Ryu","username":"Ryu_22","language_code":"ko"},
+		"chat":{
+			"id":1387407201,"first_name":"Sei Young","last_name":"Ryu","username":"Ryu_22","type":"private"},
+		"date":1604972781,
+		"document":{
+			"file_name":"IMG_7987.PNG","mime_type":"image/png",
+			"thumb":{
+				"file_id":"AAMCBQADGQEAAgGKX6nw7T8spEB5cWRTMVA7cu0PadwAAhcCAALhMVFVSGdnXgJI8V7T3gttdAADAQAHbQADpzoAAh4E",
+				"file_unique_id":"AQAD094LbXQAA6c6AAI","file_size":21885,"width":180,"height":320},
+			"file_id":"BQACAgUAAxkBAAIBil-p8O0_LKRAeXFkUzFQO3LtD2ncAAIXAgAC4TFRVUhnZ14CSPFeHgQ","file_unique_id":"AgADFwIAAuExUVU","file_size":2958565
+			}}}'

@@ -9,21 +9,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# with open("secrets.json") as f:
-#     secrets = json.loads(f.read())
+with open("secrets.json") as f:
+    secrets = json.loads(f.read())
 
-# def get_secret(setting, secrets=secrets):
-#     try:
-#         return secrets[setting]
-#     except KeyError:
-#         error_msg = "Set the {0} environment variable".format(setting)
-#         raise ImproperlyConfigured(error_msg)
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
 
-# SECRET_KEY = get_secret("SECRET_KEY")
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = get_secret("SECRET_KEY")
+# SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'VQA',
         'USER': 'root',
-        'PASSWORD' : 'hongik12!',
-        'HOST' : 'localhost',
+        'PASSWORD' : 'Rtpdud1029!!',
+        'HOST' : '127.0.0.1',
         'PORT' : '3306'
     }
 }
@@ -125,13 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TELEGRAM_TOKEN = os.environ["VQA_TOKEN"]
 
 # Heroku: Update database configuration from $DATABASE_URL. 
-import dj_database_url
-import django_heroku
+# import dj_database_url
+# import django_heroku
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
